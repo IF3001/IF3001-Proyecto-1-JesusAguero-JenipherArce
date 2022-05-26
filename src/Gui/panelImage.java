@@ -14,10 +14,10 @@ public class panelImage extends JPanel{
     @Override
     public void paint(Graphics g){
         Dimension dimension = this.getSize();
-        ImageIcon icon = new ImageIcon(getClass().getResource("/assets/a4.jpg"));
+        ImageIcon icon = new ImageIcon(getClass().getResource("/Image/a4.jpg"));
         g.drawImage(icon.getImage(), 0, 0, dimension.width, dimension.height, null);
         setOpaque(false);
-        super.paintChildren(g); "↖"
+        super.paintChildren(g); 
     }
  
     

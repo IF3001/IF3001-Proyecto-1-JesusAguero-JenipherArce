@@ -6,7 +6,7 @@ package Domain;
 
 
 import Gui.GUI;
-import Gui.GUIData;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -19,8 +19,6 @@ import javax.swing.JPanel;
 public class Controller extends JPanel implements ActionListener
 {
     	private GUI g;
-        private GUIData h;
-       private ControllerData CD;
        int ingresados = 0, match,mismatch,gap;
 public  Controller(){
  
@@ -34,54 +32,31 @@ public void initializerActions() {
 //		
 		g.getBHelp().addActionListener(this);
              g.getBSave().addActionListener(this);
-              g.getBSave1().addActionListener(this);
-					
+             g.getBMatch().addActionListener(this);
+             g.getBMismatch().addActionListener(this);
+		g.getBTable().addActionListener(this);
+                g.getBToList().addActionListener(this);
+                g.getBValue().addActionListener(this);
+                
 	}
 public void actionPerformed(ActionEvent e) 
 	{
             if(e.getSource() == g.getBSave())
    	 	{
-                    
+                 
                     
                 }
             
-            
-            
-            
-   	 	
-   		if(e.getSource() == g.getBSave1())
-   	 	{
-                    int verificar = 0;
-			int valor = Integer.parseInt(g.getTFMatch().getText());
-			if(valor >= -1 && valor <= 2)
-			{
-				match = valor;
-				verificar++;
-			}else {
-				JOptionPane.showMessageDialog(null,"El valor debe ser mayor a -1 y menor igual a 2");
-			}
-			
-			int valor2 = Integer.parseInt(g.getTFMismatch().getText());
-			if(valor2 >= -1 && valor2 <= 2)
-			{
-				mismatch = valor;
-				verificar++;
-			}else {
-				JOptionPane.showMessageDialog(null,"El valor debe ser mayor a -1 y menor igual a 2");
-			}
-                        int valor3 = Integer.parseInt(g.getTFGap().getText());
-			if(valor3 >= -1 && valor3 <= 2)
-			{
-				gap = valor;
-				verificar++;
-			}else {
-				JOptionPane.showMessageDialog(null,"El valor debe ser mayor a -1 y menor igual a 2");
-			}
+           
+                  
    	 		
-   	 	}
+   	 	
                 if(e.getSource() == g.getBHelp()) 
    	 	{   	 	
-   	 		 CD= new ControllerData();   
-                         g.dispose();
+   	 		JOptionPane.showMessageDialog(null, "info");
+   	 	}
+                if(e.getSource() == g.getbClose())
+   	 	{
+   	 		System.exit(0);	
    	 	}
 }}
