@@ -17,8 +17,18 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Runtime runtime = Runtime.getRuntime();
+        runtime.maxMemory();
+        runtime.totalMemory();
+        long inicio = System.currentTimeMillis();
+        runtime.freeMemory();
         new Controller();
+        long fin = System.currentTimeMillis();
+        double tiempo = (double) ((fin - inicio)/1000);
+        
+        
+        
+        
     }
     
 }
