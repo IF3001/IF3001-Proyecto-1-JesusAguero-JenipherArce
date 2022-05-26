@@ -37,7 +37,7 @@ public void initializerActions() {
 		g.getBTable().addActionListener(this);
                 g.getBToList().addActionListener(this);
                 g.getBValue().addActionListener(this);
-                
+                 g.getbClose().addActionListener(this);
 	}
 public void actionPerformed(ActionEvent e) 
 	{

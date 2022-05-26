@@ -63,19 +63,19 @@ public class GUI extends JFrame {
         add(jTitulo);
         
          
-        setTFMatch("");
+        setTFMatch(1);
         add(tfmatch);
 
-        setTFMismatch("");
+        setTFMismatch(-1);
         add(tfmismatch);
 
-        setTFGap("");
+        setTFGap(-2);
         add(tfgap);
 
-        setTFSeq1("");
+        setTFSeq1("AGGG");
         add(tfseq1);
 
-        setTFSeq2("");
+        setTFSeq2("AGTG");
         add(tfseq2);
 
         setjmismatch("Mismatch");
@@ -252,9 +252,9 @@ public class GUI extends JFrame {
     }
     
 
-    public void setTFMatch(String text) {
+    public void setTFMatch(int n) {
         tfmatch = new JTextField();//
-        tfmatch.setText(text);
+        tfmatch.setText(Integer.toString(n));
         tfmatch.setBounds(10, 170, 100, 20);//coordenas x y	 
     }
 
@@ -262,9 +262,9 @@ public class GUI extends JFrame {
         return this.tfmatch;
     }
 
-    public void setTFMismatch(String text) {
+    public void setTFMismatch(int n) {
         tfmismatch = new JTextField();//
-        tfmismatch.setText(text);
+        tfmismatch.setText(Integer.toString(n));
         tfmismatch.setBounds(130, 170, 100, 20);//coordenas x y	 
     }
 
@@ -272,9 +272,9 @@ public class GUI extends JFrame {
         return this.tfmismatch;
     }
 
-    public void setTFGap(String text) {
+    public void setTFGap(int n) {
         tfgap = new JTextField();//
-        tfgap.setText(text);
+        tfgap.setText(Integer.toString(n));
         tfgap.setBounds(250, 170, 100, 20);//coordenas x y	 
     }
 
