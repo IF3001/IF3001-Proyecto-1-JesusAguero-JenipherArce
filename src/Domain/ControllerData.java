@@ -4,7 +4,8 @@
  */
 package Domain;
 
-import if3001.proyecto.pkg1.jesusaguero.jenipherarce.GUIData;
+
+import Gui.GUIData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;

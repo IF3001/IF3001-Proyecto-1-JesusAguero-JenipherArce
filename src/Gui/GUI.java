@@ -4,7 +4,7 @@
  */
 package Gui;
 
-import if3001.proyecto.pkg1.jesusaguero.jenipherarce.panelImage;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;

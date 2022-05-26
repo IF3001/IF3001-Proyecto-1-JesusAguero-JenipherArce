@@ -4,9 +4,9 @@
  */
 package Domain;
 
-import if3001.proyecto.pkg1.jesusaguero.jenipherarce.ControllerData;
-import if3001.proyecto.pkg1.jesusaguero.jenipherarce.GUI;
-import if3001.proyecto.pkg1.jesusaguero.jenipherarce.GUIData;
+
+import Gui.GUI;
+import Gui.GUIData;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
