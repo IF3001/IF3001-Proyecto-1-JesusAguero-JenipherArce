@@ -164,7 +164,7 @@ public class GUI extends JFrame {
         jmatch = new JLabel();
         jmatch.setText(text);
         jmatch.setBounds(10, 150, 115, 15);
-        jmatch.setForeground(Color.red);
+        jmatch.setForeground(Color.white);
         jmatch.setFont(new Font("Algerian", Font.BOLD, 15));
 
     }
@@ -177,7 +177,7 @@ public class GUI extends JFrame {
         jmismatch = new JLabel();
         jmismatch.setText(text);
         jmismatch.setBounds(130, 150, 115, 15);
-        jmismatch.setForeground(Color.red);
+        jmismatch.setForeground(Color.white);
         jmismatch.setFont(new Font("Algerian", Font.BOLD, 15));
 
     }
@@ -190,7 +190,7 @@ public class GUI extends JFrame {
         jgap = new JLabel();
         jgap.setText(text);
         jgap.setBounds(250, 150, 115, 15);
-        jgap.setForeground(Color.red);
+        jgap.setForeground(Color.white);
         jgap.setFont(new Font("Algerian", Font.BOLD, 15));
 
     }
@@ -203,7 +203,7 @@ public class GUI extends JFrame {
         jseq1 = new JLabel();
         jseq1.setText(text);
         jseq1.setBounds(10, 70, 115, 15);
-        jseq1.setForeground(Color.red);
+        jseq1.setForeground(Color.white);
         jseq1.setFont(new Font("Algerian", Font.BOLD, 15));
 
     }
@@ -216,7 +216,7 @@ public class GUI extends JFrame {
         jseq2 = new JLabel();
         jseq2.setText(text);
         jseq2.setBounds(150, 70, 115, 15);
-        jseq2.setForeground(Color.red);
+        jseq2.setForeground(Color.white);
         jseq2.setFont(new Font("Algerian", Font.BOLD, 15));
 
     }
