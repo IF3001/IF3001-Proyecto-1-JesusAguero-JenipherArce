@@ -4,7 +4,8 @@
  */
 package Main;
 
-import Domain.Controller;
+import Controller.Controller;
+
 
 /**
  *
