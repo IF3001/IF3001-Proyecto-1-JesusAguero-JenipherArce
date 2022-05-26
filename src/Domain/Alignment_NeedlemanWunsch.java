@@ -21,8 +21,8 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
 
    protected void fillInCell(Cell currentCell, Cell cellAbove, Cell cellToLeft,
          Cell cellAboveLeft) {
-      int rowSpaceScore = cellAbove.getScore() + space;
-      int colSpaceScore = cellToLeft.getScore() + space;
+      int rowSpaceScore = cellAbove.getScore() + gap;
+      int colSpaceScore = cellToLeft.getScore() + gap;
       int matchOrMismatchScore = cellAboveLeft.getScore();
       if (sequence2.charAt(currentCell.getRow() - 1) == sequence1.charAt(currentCell.getCol() - 1)) {
          matchOrMismatchScore += match;
@@ -76,9 +76,9 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
 
    protected int getInitialScore(int row, int col) {
       if (row == 0 && col != 0) {
-         return col * space;
+         return col * gap;
       } else if (col == 0 && row != 0) {
-         return row * space;
+         return row * gap;
       } else {
          return 0;
       }

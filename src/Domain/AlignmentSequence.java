@@ -13,20 +13,20 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
     
    protected int match;
    protected int mismatch;
-   protected int space;
+   protected int gap;
    protected String[] alignments;
 
    public AlignmentSequence(String sequence1, String sequence2) {
-      this(sequence1, sequence2, 1, -1, -1);
+      this(sequence1, sequence2, 1, -1, -2);
    }
 
    public AlignmentSequence(String sequence1, String sequence2, int match,
-         int mismatch, int gap) {
+      int mismatch, int gap) {
       super(sequence1, sequence2);
 
       this.match = match;
       this.mismatch = mismatch;
-      this.space = gap;
+      this.gap = gap;
    }
 
    protected Object getTraceback() {
@@ -65,7 +65,7 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
          char c1 = alignments[0].charAt(i);
          char c2 = alignments[1].charAt(i);
          if (c1 == '-' || c2 == '-') {
-            score += space;
+            score += gap;
          } else if (c1 == c2) {
             score += match;
          } else {

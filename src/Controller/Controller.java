@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  */
 public class Controller extends JPanel implements ActionListener
 {
-    	private GUI g;
+       private GUI g;
        int ingresados = 0, match,mismatch,gap;
 public  Controller(){
  
