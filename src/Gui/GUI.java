@@ -21,10 +21,11 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Usuario
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class GUI extends JFrame {
-
+//Clase que crea los elementos de la GUI
+    
     panelImage panel = new panelImage();
 
     private String salida;

@@ -6,7 +6,7 @@ package Domain;
 
 /**
  *
- * @author 50685
+ * @author Jesus Aguero / Jenipher Arce
  */
 //Clase padre que que aplica la programacion dinamica que crea la matriz y guardar los punatajes en esta
 public abstract class DynamicAlgorithm {
@@ -24,6 +24,7 @@ public abstract class DynamicAlgorithm {
     }
 
     public int[][] getScoreTable() {
+        //Optiene los valores dentro de la tabla de puntajes y lo retorna en una nueva matriz
         ensureTableIsFilledIn();
 
         int[][] matrix = new int[scoreTable.length][scoreTable[0].length];
@@ -35,15 +36,18 @@ public abstract class DynamicAlgorithm {
 
         return matrix;
     }
-
+    
+    //Inicializa los puntajes 
     protected void initializeScores() {
         for (int i = 0; i < scoreTable.length; i++) {
             for (int j = 0; j < scoreTable[i].length; j++) {
+                //Guarda el puntaje dado en el metodo getInitialScore
                 scoreTable[i][j].setScore(getInitialScore(i, j));
             }
         }
     }
-
+    
+    //Inicializa los punteros para poder seguir la ruta
     protected void initializePointers() {
         for (int i = 0; i < scoreTable.length; i++) {
             for (int j = 0; j < scoreTable[i].length; j++) {
@@ -51,7 +55,9 @@ public abstract class DynamicAlgorithm {
             }
         }
     }
-
+    
+    //Inicializa la la tabla y le asiga un true al metodo isInitialized para saber que ya se inicialiazo 
+    //ademas ejecuta los metodos de inciailizar punteros y puntajes 
     protected void initialize() {
         for (int i = 0; i < scoreTable.length; i++) {
             for (int j = 0; j < scoreTable[i].length; j++) {
@@ -63,7 +69,7 @@ public abstract class DynamicAlgorithm {
 
         isInitialized = true;
     }
-
+    //Crea metodos abstractos para que puedan ser ejecutados en la clase hija y usarlos de igual forma en la clase padre o cualquier clase hija
     protected abstract Cell getInitialPointer(int row, int col);
 
     protected abstract int getInitialScore(int row, int col);
@@ -71,6 +77,7 @@ public abstract class DynamicAlgorithm {
     protected abstract void fillInCell(Cell currentCell, Cell cellAbove,
             Cell cellToLeft, Cell cellAboveLeft);
 
+    //Llena la tabla de puntajes utilizando los metodos abstractos  que se ejecutn en los metodos de aliniamiento
     protected void fillIn() {
         for (int row = 1; row < scoreTable.length; row++) {
             for (int col = 1; col < scoreTable[row].length; col++) {
@@ -81,12 +88,13 @@ public abstract class DynamicAlgorithm {
                 fillInCell(currentCell, cellAbove, cellToLeft, cellAboveLeft);
             }
         }
-
+        //le asigna un true para confirmar que la tabla esta llena
         tableIsFilledIn = true;
     }
-
+    //metodo abstracto
     abstract protected Object getTraceback();
 
+    //metodo que imprime los puntajes de la tabla de puntajes y le asigna las rutas
     public String printScoreAndRuteTable() {
         ensureTableIsFilledIn();
         String salida = "";
@@ -139,7 +147,7 @@ public abstract class DynamicAlgorithm {
         
         return salida;
     }
-
+    //Metodo que imprime solo los puntajes de la tabla de puntajes
     public String printScoreTable() {
         ensureTableIsFilledIn();
         String salida = "";
@@ -184,7 +192,8 @@ public abstract class DynamicAlgorithm {
         return salida;
                 
     }
-
+    
+    //Metodo que verifica si la tabla esta vacia o sin inicializar y la llena o la inicializa
     protected void ensureTableIsFilledIn() {
         if (!isInitialized) {
             initialize();

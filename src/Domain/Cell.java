@@ -6,9 +6,10 @@ package Domain;
 
 /**
  *
- * @author 50685
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class Cell {
+    //Clase Celda que se utiliza para llenar y recorrer la matriz en la clase Dinamica
     
    private Cell prevCell;
    private int score;

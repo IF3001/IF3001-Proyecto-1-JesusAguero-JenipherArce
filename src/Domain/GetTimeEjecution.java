@@ -6,38 +6,27 @@ package Domain;
 
 /**
  *
- * @author 50685
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class GetTimeEjecution {
-
+//Clase que devuelve el tiempo de ejecusion
     private long startTime;
     private long finishTime;
     private double totalTime;
     private double totalFinalTime;
 
-    public GetTimeEjecution() {
-    }
-
-    public float getStartTime() {
-        return startTime;
-    }
-
+    
+    //Asigna un tiempo de inicio
     public void setStartTime(long startTime) {
         this.startTime = startTime;
     }
 
-    public float getFinishTime() {
-        return finishTime;
-    }
-
+    //Asigna un tiempo de finalizacion
     public void setFinishTime(long finishTime) {
         this.finishTime = finishTime;
     }
 
-    public double getTotalTime() {
-        return totalTime;
-    }
-
+    //asigna el tiempo total de ejecusion
     public void setTotalTime() {
         totalTime = (double) (finishTime - startTime) / 10000;
         totalFinalTime = totalFinalTime + (double) (finishTime - startTime) / 1000;

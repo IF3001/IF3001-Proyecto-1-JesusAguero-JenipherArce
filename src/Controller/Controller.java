@@ -18,15 +18,16 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Usuario
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class Controller extends JPanel implements ActionListener {
+//Clase encargada de darle funcionalidad a los elementos de la gui(Botones, texfields, textArea, labels)
 
     private GUI g;
     int ingresados = 0, match, mismatch, gap;
 
     public Controller() {
-
+        //constructor que crea la interfaz
         g = new GUI();
 
         g.setVisible(true);
@@ -34,7 +35,8 @@ public class Controller extends JPanel implements ActionListener {
     }
 
     public void initializerActions() {
-//		
+        //Inicializa los elementos de la GUI
+
         g.getBHelp().addActionListener(this);
         g.getBPoint().addActionListener(this);
         g.getBRoute().addActionListener(this);
@@ -47,10 +49,13 @@ public class Controller extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
+        //Metodo para darle ActionEvents a los botones
         GetTimeEjecution timeUsed = new GetTimeEjecution();
         GetMemoryUsed memoryUsed = new GetMemoryUsed();
 
         if (e.getSource() == g.getBPoint()) {
+            //boton de imprimir mapa de puntos Global
+
             //Inicia el contador de tiempo
             timeUsed.setStartTime(System.currentTimeMillis());
 
@@ -60,21 +65,23 @@ public class Controller extends JPanel implements ActionListener {
 
             Alignment_NeedlemanWunsch aligner = new Alignment_NeedlemanWunsch(g.getTFSeq1().getText(),
                     g.getTFSeq2().getText(), match, mismatch, gap);
-            
-            //Imprimir tiempo y memoria usada
+
+            //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            
+
+            //Imprime una tabla de puntajes sin ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes \n\n\n" + aligner.printScoreTable() + "\n\n"
-                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" +timeUsed.toString() + "\n\n"
+                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
             g.getBRoute().setVisible(true);
-
 
         }
 
         if (e.getSource() == g.getBRoute()) {
-            
+            //boton para imprimir las rutas
+
+            //Empieza a contar el tiempo de ejecusion
             timeUsed.setStartTime(System.currentTimeMillis());
             int match = Integer.parseInt(g.getTFMatch().getText());
             int mismatch = Integer.parseInt(g.getTFMismatch().getText());
@@ -82,13 +89,14 @@ public class Controller extends JPanel implements ActionListener {
 
             Alignment_NeedlemanWunsch aligner = new Alignment_NeedlemanWunsch(g.getTFSeq1().getText(),
                     g.getTFSeq2().getText(), match, mismatch, gap);
-           
-            //Imprimir tiempo y memoria usada
+
+            //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            
+
+            //Imprime una tabla de puntajes con ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes con Ruta \n\n\n" + aligner.printScoreAndRuteTable() + "\n\n"
-                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" +timeUsed.toString() + "\n\n"
+                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
 
             g.getBPoint().setVisible(false);
@@ -97,21 +105,25 @@ public class Controller extends JPanel implements ActionListener {
 
         }
         if (e.getSource() == g.getBDisableRoute()) {
-            
+            //boton para descativar las rutas
+
+            //Empieza a contar el tiempo de ejecusion
             timeUsed.setStartTime(System.currentTimeMillis());
+
             int match = Integer.parseInt(g.getTFMatch().getText());
             int mismatch = Integer.parseInt(g.getTFMismatch().getText());
             int gap = Integer.parseInt(g.getTFGap().getText());
 
             Alignment_NeedlemanWunsch aligner = new Alignment_NeedlemanWunsch(g.getTFSeq1().getText(),
                     g.getTFSeq2().getText(), match, mismatch, gap);
-            
-            //Imprimir tiempo y memoria usada
+
+            //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            
+
+            //Imprime una tabla de puntajes sin ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes \n\n\n" + aligner.printScoreTable() + "\n\n"
-                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" +timeUsed.toString() + "\n\n"
+                    + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
 
             g.getBRoute().setVisible(true);
@@ -120,22 +132,28 @@ public class Controller extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == g.getBLocalAlig()) {
-            
+
+            //Empieza a contar el tiempo de ejecusion
             timeUsed.setStartTime(System.currentTimeMillis());
             int match = Integer.parseInt(g.getTFMatch().getText());
             int mismatch = Integer.parseInt(g.getTFMismatch().getText());
             int gap = Integer.parseInt(g.getTFGap().getText());
 
+            //Ejecuta el metodo que devuelve un aliniamiento Local
             Alignment_SmithWaterman alignSmith = new Alignment_SmithWaterman(g.getTFSeq1().getText(),
                     g.getTFSeq2().getText(), match, mismatch, gap);
             String[] aligner = alignSmith.getAlignment();
-            
+
             String salida = "Alineamiento Local obtenido con el Algoritmo de\n Smith Waterman \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
-            //Imprimir tiempo y memoria usada
+            
+            //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            g.getTAPeople().setText(salida + "\n\n" +timeUsed.toString() + "\n\n"
+            
+            
+            //imprime los datos del aliniamiento Local y tiempo y memoria usados
+            g.getTAPeople().setText(salida + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
 
         }
@@ -153,17 +171,18 @@ public class Controller extends JPanel implements ActionListener {
 
             String salida = "Alineamiento Local obtenido con el Algoritmo de\n Needleman Wunsch \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
-            //Imprimir tiempo y memoria usada
+            
+            //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
             
-            g.getTAPeople().setText(salida + "\n\n" +timeUsed.toString() + "\n\n"
+            //Imprime el aliniamiento Global y su tiempo y memoria usados
+            g.getTAPeople().setText(salida + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
         }
 
         if (e.getSource() == g.getBValue()) {
-
-            
+            //Metodo que muestra y habilita para edicion los pesos de match mismatch y gap
             g.getjmatch().setVisible(true);
             g.getTFMatch().setVisible(true);
 
@@ -176,12 +195,14 @@ public class Controller extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == g.getBHelp()) {
-           
+            
+            //metodo que muestra mensajes de ayuda y un mini manual de usuario
+            
             timeUsed.setStartTime(System.currentTimeMillis());
             Help helpOutput = new Help();
             String selection = "Entrar";
             while (!selection.equalsIgnoreCase("Salir")) {
-
+                //utiliza combobox para que pueda elegir los temas que desea ver 
                 String[] options = {"Operaciones Implementadas", "Manual de Usuario", "Salir"};
                 selection = (String) JOptionPane.showInputDialog(null, "Selecciona el proceso que desea realizar",
                         "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
@@ -203,17 +224,19 @@ public class Controller extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == g.getbClose()) {
-            
-            //JOptionPane.showMessageDialog(null,timeUsed.printFinalTimeUsed() +"\n\n"+ memoryUsed.toString());
-            JOptionPane.showMessageDialog(null, 
-                      "Yexinio Aguero - B70091                    Jenipher Arce Monestel - C00579\n\n"
-                    + "Curso: IF-3001 Algoritmos y Estructuras de Datos - Sede del Atlántico \n" 
-                    + "Recinto Paraíso - Facultad de Ciencias Económicas\n" 
+
+            //Muestra el tiempo y memoria total usados en todo el proceso
+            JOptionPane.showMessageDialog(null,timeUsed.printFinalTimeUsed() +"\n\n"+ memoryUsed.toString());
+            //Muestra los datos del proyecto
+            JOptionPane.showMessageDialog(null,
+                    "Yexinio Aguero - B70091                    Jenipher Arce Monestel - C00579\n\n"
+                    + "Curso: IF-3001 Algoritmos y Estructuras de Datos - Sede del Atlántico \n"
+                    + "Recinto Paraíso - Facultad de Ciencias Económicas\n"
                     + "I CICLO 2022 - Fechea entrega:27/05/2022\n"
                     + "Prof. Esteban Arias Méndez \n"
                     + "Bachillerato en Informatica empresarialcarrera - UCR");
-            System.exit(0);           
-            
+            System.exit(0);
+
         }
 
     }

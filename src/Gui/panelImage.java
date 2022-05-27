@@ -9,8 +9,13 @@ import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-public class panelImage extends JPanel{
+/**
+ *
+ * @author Jesus Aguero / Jenipher Arce
+ */
 
+public class panelImage extends JPanel{
+//CLase que crea el el panel con la imagen de fondo para la GUi
     @Override
     public void paint(Graphics g){
         Dimension dimension = this.getSize();

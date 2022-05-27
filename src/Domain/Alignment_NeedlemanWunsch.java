@@ -6,10 +6,11 @@ package Domain;
 
 /**
  *
- * @author 50685
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class Alignment_NeedlemanWunsch extends AlignmentSequence {
-
+    //Clase que devuelve el aliniamiento Global con el Algoritmo de Needleman Wunsch
+    
     public Alignment_NeedlemanWunsch(String sequence1, String sequence2) {
       super(sequence1, sequence2);
    }
@@ -18,7 +19,9 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
          int mismatch, int gap) {
       super(sequence1, sequence2, match, mismatch, gap);
    }
-
+   
+   //Metodo que llena las celdas con los puntajes y optiene de esta forma
+   //el mejor aliniamiento global
    protected void fillInCell(Cell currentCell, Cell cellAbove, Cell cellToLeft,
          Cell cellAboveLeft) {
       int rowSpaceScore = cellAbove.getScore() + gap;
@@ -50,11 +53,13 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
 
    @Override
    protected boolean traceBackIsNotDone(Cell currentCell) {
+       //metodo que devuelve la celda anterior para el rastreo un null si no hay nada antes
       return currentCell.getPrevCell() != null;
    }
 
    @Override
    protected Cell getTracebackStartingCell() {
+      //Metodo que devuelve el dato almacenado en la celda de inicio
       return scoreTable[scoreTable.length - 1][scoreTable[0].length - 1];
    }
 
@@ -63,7 +68,14 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
     * 
     * @see java.lang.Object#toString()
     */
-
+   @Override
+   public String toString() {
+       //Retorna el aliniamiento
+      return "[NeedlemanWunsch: sequence1=" + sequence1 + ", sequence2="
+            + sequence2 + "]";
+   }
+   
+    //Metodo que muestra la casilla del puntero inicial
    protected Cell getInitialPointer(int row, int col) {
       if (row == 0 && col != 0) {
          return scoreTable[row][col - 1];
@@ -74,6 +86,7 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
       }
    }
 
+   //Metodo que optiene el valor del puntaje inicial
    protected int getInitialScore(int row, int col) {
       if (row == 0 && col != 0) {
          return col * gap;

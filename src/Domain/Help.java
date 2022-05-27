@@ -6,10 +6,11 @@ package Domain;
 
 /**
  *
- * @author 50685
+ * @author Jesus Aguero / Jenipher Arce
  */
 public class Help {
 
+    //clase que devuelve los mensajes para la ayuda y para el manual de usuario
     public String getImplementedOperations() {
 
         String output = "1. Alineamiento gobal: Este metodo aplica el algoritmo de Needleman Wunsch, el cual \n"
