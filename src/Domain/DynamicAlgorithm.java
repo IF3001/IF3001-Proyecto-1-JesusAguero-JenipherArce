@@ -98,7 +98,7 @@ public abstract class DynamicAlgorithm {
                         salida = salida + "    ";
                     } else {
                         if (j == 2) {
-                             salida = salida + "      ";
+                             salida = salida + "     ";
                         } else {
                              salida = salida + "    ";
                         }
