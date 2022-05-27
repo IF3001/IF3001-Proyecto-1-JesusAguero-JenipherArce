@@ -87,26 +87,28 @@ public abstract class DynamicAlgorithm {
 
     abstract protected Object getTraceback();
 
-    public void printScoreAndRuteTable() {
+    public String printScoreAndRuteTable() {
         ensureTableIsFilledIn();
+        String salida = "";
+                
         for (int i = 0; i < sequence2.length() + 2; i++) {
             for (int j = 0; j < sequence1.length() + 2; j++) {
                 if (i == 0) {
                     if (j == 0 || j == 1) {
-                        System.out.print("  ");
+                        salida = salida + "    ";
                     } else {
                         if (j == 2) {
-                            System.out.print("     ");
+                             salida = salida + "      ";
                         } else {
-                            System.out.print("   ");
+                             salida = salida + "    ";
                         }
-                        System.out.print(sequence1.charAt(j - 2));
+                         salida = salida + sequence1.charAt(j - 2);
                     }
                 } else if (j == 0) {
                     if (i == 1) {
-                        System.out.print("");
+                         salida = salida + " ";
                     } else {
-                        System.out.print("" + sequence2.charAt(i - 2));
+                         salida = salida + " " + sequence2.charAt(i - 2);
                     }
                 } else {
                     String toPrint;
@@ -115,25 +117,27 @@ public abstract class DynamicAlgorithm {
                     if (prevCell != null) {
                         if (currentCell.getCol() == prevCell.getCol() + 1
                                 && currentCell.getRow() == prevCell.getRow() + 1) {
-                            toPrint = "↖";
+                            toPrint = "\\";
                         } else if (currentCell.getCol() == prevCell.getCol() + 1) {
-                            toPrint = "←";
+                            toPrint = "- ";
                         } else {
-                            toPrint = "⬆";
+                            toPrint = "|";
                         }
                     } else {
-                        toPrint = "  ";
+                        toPrint = "      ";
                     }
                     int score = currentCell.getScore();
                     String s = String.format("%1$3d", score);
                     toPrint += s;
-                    System.out.print(toPrint);
+                     salida = salida + toPrint;
                 }
 
-                System.out.print(' ');
+                 salida = salida + ' ';
             }
-            System.out.println();
+             salida = salida + "\n";
         }
+        
+        return salida;
     }
 
     public String printScoreTable() {
@@ -143,12 +147,12 @@ public abstract class DynamicAlgorithm {
             for (int j = 0; j < sequence1.length() + 2; j++) {
                 if (i == 0) {
                     if (j == 0 || j == 1) {
-                        salida = salida + "  ";
+                        salida = salida + "    ";
                     } else {
                         if (j == 2) {
-                            salida = salida + "   ";
+                            salida = salida + "    ";
                         } else {
-                            salida = salida + "  ";
+                            salida = salida + "   ";
                         }
                        salida = salida + sequence1.charAt(j - 2);
                     }
@@ -159,12 +163,12 @@ public abstract class DynamicAlgorithm {
                         salida = salida + " " + sequence2.charAt(i - 2);
                     }
                 } else {
-                    String toPrint = "";
+                    String toPrint = " ";
                     Cell currentCell = scoreTable[i - 1][j - 1];
                     Cell prevCell = currentCell.getPrevCell();
                     if (prevCell == null) {
                         
-                        toPrint = "";
+                        toPrint = "   ";
                     }
                     int score = currentCell.getScore();
                     String s = String.format("%1$3d", score);

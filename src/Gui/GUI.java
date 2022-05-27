@@ -4,10 +4,10 @@
  */
 package Gui;
 
-
 import Domain.AlignmentSequence;
 import Domain.Alignment_NeedlemanWunsch;
 import java.awt.BorderLayout;
+import static java.awt.BorderLayout.CENTER;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -23,12 +23,10 @@ import javax.swing.JTextField;
  *
  * @author Usuario
  */
-
 public class GUI extends JFrame {
-    
-   
+
     panelImage panel = new panelImage();
-    
+
     private String salida;
     //LABELS
     private JLabel jTitulo;
@@ -37,13 +35,13 @@ public class GUI extends JFrame {
     private JLabel jmatch;
     private JLabel jmismatch;
     private JLabel jgap;
-    private JButton bTable; // Boton de tablas
+    private JButton bDisableRoute; // Boton de tablas
     private JButton bClose; // BOTON DE CERRAR LA INTERFAZ
     private JButton bValue;// Boton de valor
     private JButton bToList;// Boton de listar
-    private JButton bmatch;// Boton de listar
-    private JButton bmismatch;// Boton de listar
-    private JButton bgap;// Boton de listar
+    private JButton bRoute;// Boton de listar
+    private JButton bLocalAlig;// Boton de listar
+    private JButton bGlobalAlig;// Boton de listar
     //JTextField
     private JTextField tfmatch;
     private JTextField tfmismatch;
@@ -52,23 +50,20 @@ public class GUI extends JFrame {
     private JTextField tfseq2;
     //BOTONES
     private JButton bHelp; // Boton de ayuda
-    private JButton bSave; // Boton de guardar
+    private JButton bPoint; // Boton de guardar
     private JTextArea taPeople;
+
     public GUI() {
-        
-        
-        
+
         setBHelp("Ayuda");
         add(bHelp);
 
-        setBSave("Guardar");
-        add(bSave);
+        setBPoint("Aplicar");
+        add(bPoint);
 
-       
         setjTitulo("Proyecto 1");
         add(jTitulo);
-        
-         
+
         setTFMatch(1);
         add(tfmatch);
 
@@ -98,33 +93,30 @@ public class GUI extends JFrame {
 
         setjseq2("Secuencia 2");
         add(jseq2);
-        
-        
-        setTAPeople(getSalida());
+
+        setTAPeople();
         add(taPeople);
-        
-        
+
         setbClose("Cerrar");
         add(bClose);
 
-        setBTable("Tablas");
-        add(bTable);
-        
+        setBDisableRoute("Desactivar ruta");
+        add(bDisableRoute);
+
         setBValue("Valor");
         add(bValue);
-        
+
         setBToList("listar");
         add(bToList);
-        
-        setBMatch("Match");
-        add(bmatch);
-        
-        setBMismatch("Mismatch");
-        add(bmismatch);
-        
-        setBgap("Mismatch");
-        add(bgap);
-        
+
+        setBRoute("Activar Ruta");
+        add(bRoute);
+
+        setBLocalAlig("Alineamiento Local");
+        add(bLocalAlig);
+
+        setBGlobalAlig("Alineamiento Global");
+        add(bGlobalAlig);
 
         initializer();
     }
@@ -159,13 +151,12 @@ public class GUI extends JFrame {
 //        jEtiquet.setFont(new Font("Algerian", Font.BOLD, 15));
 //
 //    }
-
 //    public JLabel getjEtiquet() {
 //        return jEtiquet;
 //    }
-
     public void setjmatch(String text) {
         jmatch = new JLabel();
+        jmatch.setVisible(false);
         jmatch.setText(text);
         jmatch.setBounds(10, 150, 115, 15);
         jmatch.setForeground(Color.white);
@@ -179,6 +170,7 @@ public class GUI extends JFrame {
 
     public void setjmismatch(String text) {
         jmismatch = new JLabel();
+        jmismatch.setVisible(false);
         jmismatch.setText(text);
         jmismatch.setBounds(130, 150, 115, 15);
         jmismatch.setForeground(Color.white);
@@ -192,6 +184,7 @@ public class GUI extends JFrame {
 
     public void setjgap(String text) {
         jgap = new JLabel();
+        jgap.setVisible(false);
         jgap.setText(text);
         jgap.setBounds(250, 150, 115, 15);
         jgap.setForeground(Color.white);
@@ -242,22 +235,22 @@ public class GUI extends JFrame {
         return bHelp;
     }
 
-    public void setBSave(String text) {
-        bSave = new JButton();
-        bSave.setText(text);
-        bSave.setBounds(8, 220, 115, 30);
-        bSave.setFont(new Font("Algerian", Font.BOLD, 15));
-        bSave.setForeground(Color.white);
-        bSave.setBackground(Color.gray);
+    public void setBPoint(String text) {
+        bPoint = new JButton();
+        bPoint.setText(text);
+        bPoint.setBounds(8, 220, 115, 30);
+        bPoint.setFont(new Font("Algerian", Font.BOLD, 15));
+        bPoint.setForeground(Color.white);
+        bPoint.setBackground(Color.gray);
     }
 
-    public JButton getBSave() {
-        return bSave;
+    public JButton getBPoint() {
+        return bPoint;
     }
-    
 
     public void setTFMatch(int n) {
         tfmatch = new JTextField();//
+        tfmatch.setVisible(false);
         tfmatch.setText(Integer.toString(n));
         tfmatch.setBounds(10, 170, 100, 20);//coordenas x y	 
     }
@@ -268,6 +261,7 @@ public class GUI extends JFrame {
 
     public void setTFMismatch(int n) {
         tfmismatch = new JTextField();//
+        tfmismatch.setVisible(false);
         tfmismatch.setText(Integer.toString(n));
         tfmismatch.setBounds(130, 170, 100, 20);//coordenas x y	 
     }
@@ -278,6 +272,7 @@ public class GUI extends JFrame {
 
     public void setTFGap(int n) {
         tfgap = new JTextField();//
+        tfgap.setVisible(false);
         tfgap.setText(Integer.toString(n));
         tfgap.setBounds(250, 170, 100, 20);//coordenas x y	 
     }
@@ -305,17 +300,19 @@ public class GUI extends JFrame {
     public JTextField getTFSeq2() {
         return this.tfseq2;
     }
-      public void setBTable(String text) {
-        bTable = new JButton();
-        bTable.setText(text);
-        bTable.setBounds(8, 350, 115, 30);
-        bTable.setFont(new Font("Algerian", Font.BOLD, 15));
-        bTable.setForeground(Color.white);
-        bTable.setBackground(Color.gray);
+
+    public void setBDisableRoute(String text) {
+        bDisableRoute = new JButton();
+        bDisableRoute.setText(text);
+        bDisableRoute.setBounds(8, 350, 220, 30);
+        bDisableRoute.setFont(new Font("Algerian", Font.BOLD, 15));
+        bDisableRoute.setForeground(Color.white);
+        bDisableRoute.setBackground(Color.gray);
+        bDisableRoute.setVisible(false);
     }
 
-    public JButton getBTable() {
-        return bTable;
+    public JButton getBDisableRoute() {
+        return bDisableRoute;
     }
 
     public void setbClose(String text) {
@@ -357,59 +354,61 @@ public class GUI extends JFrame {
         return bToList;
     }
 
-    public void setBMatch(String text) {
-        bmatch = new JButton();
-        bmatch.setText(text);
-        bmatch.setBounds(8, 500, 115, 30);
-        bmatch.setFont(new Font("Algerian", Font.BOLD, 15));
-        bmatch.setForeground(Color.white);
-        bmatch.setBackground(Color.gray);
+    public void setBRoute(String text) {
+        bRoute = new JButton();
+        bRoute.setVisible(false);
+        bRoute.setText(text);
+        bRoute.setBounds(8, 500, 220, 30);
+        bRoute.setFont(new Font("Algerian", Font.BOLD, 15));
+        bRoute.setForeground(Color.white);
+        bRoute.setBackground(Color.gray);
     }
 
-    public JButton getBMatch() {
-        return bmatch;
+    public JButton getBRoute() {
+        return bRoute;
     }
 
-    public void setBgap(String text) {
-        bgap = new JButton();
-        bgap.setText(text);
-        bgap.setBounds(8, 550, 115, 30);
-        bgap.setFont(new Font("Algerian", Font.BOLD, 15));
-        bgap.setForeground(Color.white);
-        bgap.setBackground(Color.gray);
+    public void setBGlobalAlig(String text) {
+        bGlobalAlig = new JButton();
+        bGlobalAlig.setText(text);
+        bGlobalAlig.setBounds(8, 550, 220, 30);
+        bGlobalAlig.setFont(new Font("Algerian", Font.BOLD, 15));
+        bGlobalAlig.setForeground(Color.white);
+        bGlobalAlig.setBackground(Color.gray);
     }
 
-    public JButton getBgap() {
-        return bgap;
+    public JButton getBGlobalAlig() {
+        return bGlobalAlig;
     }
 
-    public void setBMismatch(String text) {
-        bmismatch = new JButton();
-        bmismatch.setText(text);
-        bmismatch.setBounds(8, 600, 115, 30);
-        bmismatch.setFont(new Font("Algerian", Font.BOLD, 15));
-        bmismatch.setForeground(Color.white);
-        bmismatch.setBackground(Color.gray);
+    public void setBLocalAlig(String text) {
+        bLocalAlig = new JButton();
+        bLocalAlig.setText(text);
+        bLocalAlig.setBounds(8, 600, 220, 30);
+        bLocalAlig.setFont(new Font("Algerian", Font.BOLD, 15));
+        bLocalAlig.setForeground(Color.white);
+        bLocalAlig.setBackground(Color.gray);
     }
 
-    public JButton getBMismatch() {
-        return bmismatch;
+    public JButton getBLocalAlig() {
+        return bLocalAlig;
     }
- public void setTAPeople(String text){
-         taPeople= new JTextArea(text);
-           taPeople.setLineWrap(true);
-           taPeople.setBounds(270,230,580,440);
-            taPeople.setBackground(Color.gray);
-         }
-         public JTextArea getTAPeople(){
-return taPeople;
-         }
-         
 
+    public void setTAPeople() {
+        taPeople = new JTextArea();
+        taPeople.setLineWrap(true);
+        taPeople.setBounds(270, 230, 580, 440);
+        taPeople.setBackground(Color.white);
+         taPeople.setFont(new Font("Algerian", Font.BOLD, 20));
+    }
+
+    public JTextArea getTAPeople() {
+
+        return taPeople;
+    }
 
     //BOTON PARA CERRAR EL JUEGO
     //BOTON PARA REINICIAR EL JUEGO
-
     public String getSalida() {
         return salida;
     }
