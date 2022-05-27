@@ -5,6 +5,8 @@
 package Gui;
 
 
+import Domain.AlignmentSequence;
+import Domain.Alignment_NeedlemanWunsch;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -23,9 +25,11 @@ import javax.swing.JTextField;
  */
 
 public class GUI extends JFrame {
-
+    
+   
     panelImage panel = new panelImage();
-
+    
+    private String salida;
     //LABELS
     private JLabel jTitulo;
     private JLabel jseq1;
@@ -33,7 +37,7 @@ public class GUI extends JFrame {
     private JLabel jmatch;
     private JLabel jmismatch;
     private JLabel jgap;
-  private JButton bTable; // Boton de tablas
+    private JButton bTable; // Boton de tablas
     private JButton bClose; // BOTON DE CERRAR LA INTERFAZ
     private JButton bValue;// Boton de valor
     private JButton bToList;// Boton de listar
@@ -49,9 +53,11 @@ public class GUI extends JFrame {
     //BOTONES
     private JButton bHelp; // Boton de ayuda
     private JButton bSave; // Boton de guardar
- private JTextArea taPeople;
+    private JTextArea taPeople;
     public GUI() {
-
+        
+        
+        
         setBHelp("Ayuda");
         add(bHelp);
 
@@ -94,13 +100,11 @@ public class GUI extends JFrame {
         add(jseq2);
         
         
-        setTAPeople();
-   ;
-    
-  add(taPeople);
+        setTAPeople(getSalida());
+        add(taPeople);
         
         
-          setbClose("Cerrar");
+        setbClose("Cerrar");
         add(bClose);
 
         setBTable("Tablas");
@@ -391,8 +395,8 @@ public class GUI extends JFrame {
     public JButton getBMismatch() {
         return bmismatch;
     }
- public void setTAPeople(){
-         taPeople= new JTextArea();
+ public void setTAPeople(String text){
+         taPeople= new JTextArea(text);
            taPeople.setLineWrap(true);
            taPeople.setBounds(270,230,580,440);
             taPeople.setBackground(Color.gray);
@@ -400,7 +404,17 @@ public class GUI extends JFrame {
          public JTextArea getTAPeople(){
 return taPeople;
          }
+         
+
 
     //BOTON PARA CERRAR EL JUEGO
     //BOTON PARA REINICIAR EL JUEGO
+
+    public String getSalida() {
+        return salida;
+    }
+
+    public void setSalida(String salida) {
+        this.salida = salida;
+    }
 }
