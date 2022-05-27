@@ -61,7 +61,7 @@ public class GUI extends JFrame {
         setBPoint("Aplicar");
         add(bPoint);
 
-        setjTitulo("Proyecto 1");
+        setjTitulo("Alineamiento de hileras");
         add(jTitulo);
 
         setTFMatch(1);
@@ -123,11 +123,18 @@ public class GUI extends JFrame {
 
     public void initializer() {
 
-        this.setTitle("Ventana con Imagen");
-        this.setSize(new Dimension(900, 800));
-        this.setLocationRelativeTo(null);
-        this.add(panel);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        this.setTitle("Ventana con Imagen");
+//        this.setSize(new Dimension(900, 800));
+//        this.setLocationRelativeTo(null);
+////        this.add(panel);
+//this.getContentPane().setBackground(Color.white);
+setTitle("Proyecto 1");//tituloventana
+		setLayout(null);// ordena pero si se pone todo no
+		setSize(900,800);// tamano ventana
+		setVisible(true);
+		setLocationRelativeTo(null);
+		this.getContentPane().setBackground(Color.LIGHT_GRAY);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar proceso	
     }
 
     public void setjTitulo(String text) {
