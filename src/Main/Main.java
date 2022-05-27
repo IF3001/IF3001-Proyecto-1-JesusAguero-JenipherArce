@@ -6,7 +6,6 @@ package Main;
 
 import Controller.Controller;
 
-
 /**
  *
  * @author Usuario
@@ -22,13 +21,23 @@ public class Main {
         runtime.totalMemory();
         long inicio = System.currentTimeMillis();
         runtime.freeMemory();
-        new Controller();
+        int m = 0;
+        for (int i = 0; i < 1000; i++) {
+
+            if (i % 2 == 0) {
+
+                m = m + (i * 2);
+            } else {
+                m = m - i;
+
+            }
+        }
+        //new Controller();
         long fin = System.currentTimeMillis();
-        double tiempo = (double) ((fin - inicio)/1000);
-        
-        
-        
-        
+        double tiempo = (double) ((fin - inicio) / 1000);
+
+        System.out.println("El tiempo total de ejecusion es: " + tiempo
+                + "\nEl espacio total consumido es: " + (runtime.totalMemory() - runtime.freeMemory() / 1000) + " ms");
     }
-    
+
 }
