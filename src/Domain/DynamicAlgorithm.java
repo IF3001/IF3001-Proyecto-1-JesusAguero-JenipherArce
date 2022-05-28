@@ -97,26 +97,26 @@ public abstract class DynamicAlgorithm {
     //metodo que imprime los puntajes de la tabla de puntajes y le asigna las rutas
     public String printScoreAndRuteTable() {
         ensureTableIsFilledIn();
-        String salida = "";
+        String output = "";
                 
         for (int i = 0; i < sequence2.length() + 2; i++) {
             for (int j = 0; j < sequence1.length() + 2; j++) {
                 if (i == 0) {
                     if (j == 0 || j == 1) {
-                        salida = salida + "    ";
+                        output = output + "    ";
                     } else {
                         if (j == 2) {
-                             salida = salida + "     ";
+                             output = output + "     ";
                         } else {
-                             salida = salida + "    ";
+                             output = output + "    ";
                         }
-                         salida = salida + sequence1.charAt(j - 2);
+                         output = output + sequence1.charAt(j - 2);
                     }
                 } else if (j == 0) {
                     if (i == 1) {
-                         salida = salida + " ";
+                         output = output + " ";
                     } else {
-                         salida = salida + " " + sequence2.charAt(i - 2);
+                         output = output + " " + sequence2.charAt(i - 2);
                     }
                 } else {
                     String toPrint;
@@ -137,38 +137,38 @@ public abstract class DynamicAlgorithm {
                     int score = currentCell.getScore();
                     String s = String.format("%1$3d", score);
                     toPrint += s;
-                     salida = salida + toPrint;
+                     output = output + toPrint;
                 }
 
-                 salida = salida + ' ';
+                 output = output + ' ';
             }
-             salida = salida + "\n";
+             output = output + "\n";
         }
         
-        return salida;
+        return output;
     }
     //Metodo que imprime solo los puntajes de la tabla de puntajes
     public String printScoreTable() {
         ensureTableIsFilledIn();
-        String salida = "";
+        String output = "";
         for (int i = 0; i < sequence2.length() + 2; i++) {
             for (int j = 0; j < sequence1.length() + 2; j++) {
                 if (i == 0) {
                     if (j == 0 || j == 1) {
-                        salida = salida + "    ";
+                        output = output + "    ";
                     } else {
                         if (j == 2) {
-                            salida = salida + "    ";
+                            output = output + "    ";
                         } else {
-                            salida = salida + "   ";
+                            output = output + "   ";
                         }
-                       salida = salida + sequence1.charAt(j - 2);
+                       output = output + sequence1.charAt(j - 2);
                     }
                 } else if (j == 0) {
                     if (i == 1) {
-                        salida = salida + "  ";
+                        output = output + "  ";
                     } else {
-                        salida = salida + " " + sequence2.charAt(i - 2);
+                        output = output + " " + sequence2.charAt(i - 2);
                     }
                 } else {
                     String toPrint = " ";
@@ -181,15 +181,15 @@ public abstract class DynamicAlgorithm {
                     int score = currentCell.getScore();
                     String s = String.format("%1$3d", score);
                     toPrint += s;
-                    salida = salida + toPrint;
+                    output = output + toPrint;
                 }
 
-                salida = salida + ' ';
+                output = output + ' ';
             }
-            salida = salida + "\n";
+            output = output + "\n";
         }
         
-        return salida;
+        return output;
                 
     }
     

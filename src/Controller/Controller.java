@@ -144,7 +144,7 @@ public class Controller extends JPanel implements ActionListener {
                     g.getTFSeq2().getText(), match, mismatch, gap);
             String[] aligner = alignSmith.getAlignment();
 
-            String salida = "Alineamiento Local obtenido con el Algoritmo de\n Smith Waterman \n\n"
+            String output = "Alineamiento Local obtenido con el Algoritmo de\n Smith Waterman \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
             
             //Termina el contador de tiempo y ejecuta el calcular tiempo total
@@ -153,7 +153,7 @@ public class Controller extends JPanel implements ActionListener {
             
             
             //imprime los datos del aliniamiento Local y tiempo y memoria usados
-            g.getTAPeople().setText(salida + "\n\n" + timeUsed.toString() + "\n\n"
+            g.getTAPeople().setText(output + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
 
         }
@@ -169,7 +169,7 @@ public class Controller extends JPanel implements ActionListener {
                     g.getTFSeq2().getText(), match, mismatch, gap);
             String[] aligner = alignNeedleman.getAlignment();
 
-            String salida = "Alineamiento Local obtenido con el Algoritmo de\n Needleman Wunsch \n\n"
+            String output = "Alineamiento Local obtenido con el Algoritmo de\n Needleman Wunsch \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
             
             //Termina el contador de tiempo y ejecuta el calcular tiempo total
@@ -177,7 +177,7 @@ public class Controller extends JPanel implements ActionListener {
             timeUsed.setTotalTime();
             
             //Imprime el aliniamiento Global y su tiempo y memoria usados
-            g.getTAPeople().setText(salida + "\n\n" + timeUsed.toString() + "\n\n"
+            g.getTAPeople().setText(output + "\n\n" + timeUsed.toString() + "\n\n"
                     + memoryUsed.printToMemoryUsed());
         }
 
@@ -221,6 +221,18 @@ public class Controller extends JPanel implements ActionListener {
                     }
                 }
             }
+        }
+        if(e.getSource() == g.getBToList()){
+            
+            String output = "#Listado de Algoritmos implementados\n\n"
+                    + "1. Algoritmo de Alineamiento Global de Needleman Wunsch\n"
+                    + "2. Algoritmo de Alineamiento Local de Smith Waterman\n"
+                    + "3. Algoritmo de ordenamiento de secuencias programacion Dinamica"
+                    + "4. Algoritmo Runtime, que devuelve el uso de memoria"
+                    + "5. Algoritmo System.currentTimeMillis() que devuelve el tiempo de ejecusion";
+            
+            g.getTAPeople().setText(output);
+        
         }
 
         if (e.getSource() == g.getbClose()) {

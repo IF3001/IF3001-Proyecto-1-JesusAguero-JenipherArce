@@ -94,15 +94,15 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
    
    //Metodo que imprime los elementos guardados dentro de la tabla de puntajes
    public void printScore(){
-       String salida = "";
+       String output = "";
        for (int fila = 0; fila < scoreTable.length; fila++) {
-           salida = salida + "\n";
+           output = output + "\n";
            for (int columna = 0; columna < scoreTable[fila].length; columna++) {
-               salida = salida + scoreTable[fila][columna] + "| ";
+               output = output + scoreTable[fila][columna] + "| ";
            }
        }
        
-       System.out.println(salida);   
+       System.out.println(output);   
    }
      
 }
