@@ -225,11 +225,11 @@ public class Controller extends JPanel implements ActionListener {
         if(e.getSource() == g.getBToList()){
             
             String output = "#Listado de Algoritmos implementados\n\n"
-                    + "1. Algoritmo de Alineamiento Global de Needleman Wunsch\n"
-                    + "2. Algoritmo de Alineamiento Local de Smith Waterman\n"
-                    + "3. Algoritmo de ordenamiento de secuencias programacion Dinamica"
-                    + "4. Algoritmo Runtime, que devuelve el uso de memoria"
-                    + "5. Algoritmo System.currentTimeMillis() que devuelve el tiempo de ejecusion";
+                    + "1. Algoritmo de Alineamiento Global de\n Needleman Wunsch.\n"
+                    + "2. Algoritmo de Alineamiento Local de\n Smith Waterman.\n"
+                    + "3. Algoritmo de ordenamiento de secuencias\n programacion Dinamica.\n"
+                    + "4. Algoritmo Runtime, que devuelve el uso\n de memoria.\n"
+                    + "5. Algoritmo System.currentTimeMillis()\n que devuelve el tiempo de ejecusion.";
             
             g.getTAPeople().setText(output);
         
