@@ -176,7 +176,7 @@ public class Controller extends JPanel implements ActionListener {
 
             //Imprime el aliniamiento Global y su tiempo y memoria usados
             g.getTAPeople().setText(output + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.toString() + "\n\n" + timeUsed.getTotalFinalTime());
+                    + memoryUsed.toString() + "\n\n");
         }
 
         if (e.getSource() == g.getBValue()) {
