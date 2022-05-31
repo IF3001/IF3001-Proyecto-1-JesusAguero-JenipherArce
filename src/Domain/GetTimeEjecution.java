@@ -13,7 +13,7 @@ public class GetTimeEjecution {
     private long startTime;
     private long finishTime;
     private double totalTime;
-    private double totalFinalTime;
+    private double totalFinalTime = 0.0;
 
     
     //Asigna un tiempo de inicio
@@ -26,11 +26,16 @@ public class GetTimeEjecution {
         this.finishTime = finishTime;
     }
 
+    public void setTotalFinalTime(double totalTime) {
+        this.totalFinalTime = totalFinalTime + totalTime;
+    }
+
+    
     //asigna el tiempo total de ejecusion
     public void setTotalTime() {
         totalTime = (double) (finishTime - startTime) / 1000;
         
-        totalFinalTime = totalFinalTime + totalTime;
+        setTotalFinalTime(totalTime);
     }
 
     public double getTotalFinalTime() {
@@ -39,7 +44,7 @@ public class GetTimeEjecution {
     
 
     public String printFinalTimeUsed() {
-        String output = "El tiempo total de ejcucion es de: " + totalFinalTime;
+        String output = "El tiempo total de ejcucion es de: " + totalFinalTime + " ms";
         
         return output;
     }

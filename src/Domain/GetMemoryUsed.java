@@ -16,7 +16,7 @@ public class GetMemoryUsed {
     private static int dataSize = 1024 * 1024;
     //El runtime devuelve memoria en MB
     Runtime runtime;
-    private double memoryFinal;
+    private double memoryFinal = 0.0;
 
     public Double MemoryUsed() {
         runtime = Runtime.getRuntime();
@@ -26,7 +26,7 @@ public class GetMemoryUsed {
         
         double memoryUsed = (runtime.totalMemory() - runtime.freeMemory() / dataSize);
 
-        memoryFinal = memoryFinal + memoryUsed;
+        memoryFinal = memoryFinal + (runtime.totalMemory() - runtime.freeMemory());
         
         return memoryUsed;
     }
@@ -39,7 +39,7 @@ public class GetMemoryUsed {
     
     public String printMemoryFinal(){
         
-        return "Memoria total usada: " + memoryFinal + " bytes";
+        return "Memoria total usada: " + (memoryFinal/dataSize) + " bytes";
     }
     
     
