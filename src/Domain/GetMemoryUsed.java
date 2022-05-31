@@ -18,23 +18,27 @@ public class GetMemoryUsed {
     Runtime runtime;
     private double memoryFinal;
 
-    public String printToMemoryUsed() {
+    public Double MemoryUsed() {
         runtime = Runtime.getRuntime();
         runtime.maxMemory();
         runtime.totalMemory();
         runtime.freeMemory();
         
-        String output = "El espacio total consumido es: " 
-                 + (runtime.totalMemory() - runtime.freeMemory() / dataSize) + " bytes";
-        //suma memoria a la memoria total
-        memoryFinal = memoryFinal + (runtime.totalMemory() - runtime.freeMemory() / dataSize);
+        double memoryUsed = (runtime.totalMemory() - runtime.freeMemory() / dataSize);
+
+        memoryFinal = memoryFinal + memoryUsed;
         
-        return output;
+        return memoryUsed;
     }
 
     @Override
     //Imprime el total de memoria usada en toda la ejecusion
     public String toString() {
+        return "Memoria usada: " + MemoryUsed() + " bytes";
+    }
+    
+    public String printMemoryFinal(){
+        
         return "Memoria total usada: " + memoryFinal + " bytes";
     }
     

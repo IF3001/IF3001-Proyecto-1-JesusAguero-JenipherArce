@@ -43,7 +43,6 @@ public class Controller extends JPanel implements ActionListener {
         g.getBLocalAlig().addActionListener(this);
         g.getBGlobalAlig().addActionListener(this);
         g.getBDisableRoute().addActionListener(this);
-        g.getBToList().addActionListener(this);
         g.getBValue().addActionListener(this);
         g.getbClose().addActionListener(this);
     }
@@ -73,7 +72,7 @@ public class Controller extends JPanel implements ActionListener {
             //Imprime una tabla de puntajes sin ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes \n\n\n" + aligner.printScoreTable() + "\n\n"
                     + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.printToMemoryUsed());
+                    + memoryUsed.toString());
             g.getBRoute().setVisible(true);
 
         }
@@ -97,7 +96,7 @@ public class Controller extends JPanel implements ActionListener {
             //Imprime una tabla de puntajes con ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes con Ruta \n\n\n" + aligner.printScoreAndRuteTable() + "\n\n"
                     + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.printToMemoryUsed());
+                    + memoryUsed.toString());
 
             g.getBPoint().setVisible(false);
             g.getBRoute().setVisible(false);
@@ -124,7 +123,7 @@ public class Controller extends JPanel implements ActionListener {
             //Imprime una tabla de puntajes sin ruta Global y el tiempo y memoria usados 
             g.getTAPeople().setText("Tabla de puntajes \n\n\n" + aligner.printScoreTable() + "\n\n"
                     + "Mejor puntaje: " + aligner.getAlignmentScore() + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.printToMemoryUsed());
+                    + memoryUsed.toString());
 
             g.getBRoute().setVisible(true);
             g.getBPoint().setVisible(true);
@@ -146,15 +145,14 @@ public class Controller extends JPanel implements ActionListener {
 
             String output = "Alineamiento Local obtenido con el Algoritmo de\n Smith Waterman \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
-            
+
             //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            
-            
+
             //imprime los datos del aliniamiento Local y tiempo y memoria usados
             g.getTAPeople().setText(output + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.printToMemoryUsed());
+                    + memoryUsed.toString());
 
         }
 
@@ -171,14 +169,14 @@ public class Controller extends JPanel implements ActionListener {
 
             String output = "Alineamiento Local obtenido con el Algoritmo de\n Needleman Wunsch \n\n"
                     + "Secuencia 1: " + aligner[0] + "\n" + "Secuencia 2: " + aligner[1];
-            
+
             //Termina el contador de tiempo y ejecuta el calcular tiempo total
             timeUsed.setFinishTime(System.currentTimeMillis());
             timeUsed.setTotalTime();
-            
+
             //Imprime el aliniamiento Global y su tiempo y memoria usados
             g.getTAPeople().setText(output + "\n\n" + timeUsed.toString() + "\n\n"
-                    + memoryUsed.printToMemoryUsed());
+                    + memoryUsed.toString() + "\n\n" + timeUsed.getTotalFinalTime());
         }
 
         if (e.getSource() == g.getBValue()) {
@@ -195,9 +193,8 @@ public class Controller extends JPanel implements ActionListener {
         }
 
         if (e.getSource() == g.getBHelp()) {
-            
+
             //metodo que muestra mensajes de ayuda y un mini manual de usuario
-            
             timeUsed.setStartTime(System.currentTimeMillis());
             Help helpOutput = new Help();
             String selection = "Entrar";
@@ -210,35 +207,28 @@ public class Controller extends JPanel implements ActionListener {
                 if (selection == "Operaciones Implementadas") {
                     JOptionPane.showMessageDialog(null, helpOutput.getImplementedOperations());
 
-                }
-                if (selection == "Mini manual") {
+                } else if (selection == "Manual de Usuario") {
                     selection = "Entrar";
                     while (!selection.equalsIgnoreCase("Regresar")) {
                         String[] options1 = {"Botones", "Valores", "Ingreso de datos", "Salidas", "Regresar"};
                         selection = (String) JOptionPane.showInputDialog(null, "Selecciona el proceso que desea realizar",
-                                "Elegir", JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-                        JOptionPane.showMessageDialog(null, helpOutput.getHandbook(selection));
+                                "Elegir", JOptionPane.QUESTION_MESSAGE, null, options1, options1[0]);
+                        if (!helpOutput.getHandbook(selection).equalsIgnoreCase("Salir")) {
+
+                            JOptionPane.showMessageDialog(null, helpOutput.getHandbook(selection));
+                        }
+
                     }
+
                 }
             }
-        }
-        if(e.getSource() == g.getBToList()){
-            
-            String output = "#Listado de Algoritmos implementados\n\n"
-                    + "1. Algoritmo de Alineamiento Global de\n Needleman Wunsch.\n"
-                    + "2. Algoritmo de Alineamiento Local de\n Smith Waterman.\n"
-                    + "3. Algoritmo de ordenamiento de secuencias\n programacion Dinamica.\n"
-                    + "4. Algoritmo Runtime, que devuelve el uso\n de memoria.\n"
-                    + "5. Algoritmo System.currentTimeMillis()\n que devuelve el tiempo de ejecusion.";
-            
-            g.getTAPeople().setText(output);
-        
         }
 
         if (e.getSource() == g.getbClose()) {
 
             //Muestra el tiempo y memoria total usados en todo el proceso
-            JOptionPane.showMessageDialog(null,timeUsed.printFinalTimeUsed() +"\n\n"+ memoryUsed.toString());
+            
+            JOptionPane.showMessageDialog(null, timeUsed.printFinalTimeUsed() + "\n\n" + memoryUsed.printMemoryFinal());
             //Muestra los datos del proyecto
             JOptionPane.showMessageDialog(null,
                     "Yexinio Aguero - B70091                    Jenipher Arce Monestel - C00579\n\n"

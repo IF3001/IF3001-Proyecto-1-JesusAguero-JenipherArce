@@ -80,6 +80,9 @@ public class Help {
                     + "las (|) representan (↑), y los (-) representan (←), esto por que el campo de texto utilizado para \n"
                     + "mostrar los resultados no admite el uso de estas flechas.";
 
+        }else if(element.equalsIgnoreCase("Regresar")){
+            output = "Salir";
+        
         }
 
         return output;

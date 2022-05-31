@@ -36,13 +36,7 @@ public class GUI extends JFrame {
     private JLabel jmatch;
     private JLabel jmismatch;
     private JLabel jgap;
-    private JButton bDisableRoute; // Boton de tablas
-    private JButton bClose; // BOTON DE CERRAR LA INTERFAZ
-    private JButton bValue;// Boton de valor
-    private JButton bToList;// Boton de listar
-    private JButton bRoute;// Boton de listar
-    private JButton bLocalAlig;// Boton de listar
-    private JButton bGlobalAlig;// Boton de listar
+    
     //JTextField
     private JTextField tfmatch;
     private JTextField tfmismatch;
@@ -52,6 +46,13 @@ public class GUI extends JFrame {
     //BOTONES
     private JButton bHelp; // Boton de ayuda
     private JButton bPoint; // Boton de guardar
+    private JButton bDisableRoute; // Boton de tablas
+    private JButton bClose; // BOTON DE CERRAR LA INTERFAZ
+    private JButton bValue;// Boton de valor
+    private JButton bRoute;// Boton de listar
+    private JButton bLocalAlig;// Boton de listar
+    private JButton bGlobalAlig;// Boton de listar
+    //Text Area
     private JTextArea taPeople;
 
     public GUI() {
@@ -107,9 +108,6 @@ public class GUI extends JFrame {
         setBValue("Valor");
         add(bValue);
 
-        setBToList("listar");
-        add(bToList);
-
         setBRoute("Activar Ruta");
         add(bRoute);
 
@@ -124,11 +122,7 @@ public class GUI extends JFrame {
 
     public void initializer() {
 
-//        this.setTitle("Ventana con Imagen");
-//        this.setSize(new Dimension(900, 800));
-//        this.setLocationRelativeTo(null);
-////        this.add(panel);
-//this.getContentPane().setBackground(Color.white);
+
 setTitle("Proyecto 1");//tituloventana
 		setLayout(null);// ordena pero si se pone todo no
 		setSize(900,800);// tamano ventana
@@ -151,17 +145,7 @@ setTitle("Proyecto 1");//tituloventana
         return jTitulo;
     }
 
-//    public void setjEtiquet(String text) {
-//        jEtiquet = new JLabel();
-//        jEtiquet.setText(text);
-//        jEtiquet.setBounds(10, 30, 350, 30);
-//        jEtiquet.setForeground(Color.red);
-//        jEtiquet.setFont(new Font("Algerian", Font.BOLD, 15));
-//
-//    }
-//    public JLabel getjEtiquet() {
-//        return jEtiquet;
-//    }
+
     public void setjmatch(String text) {
         jmatch = new JLabel();
         jmatch.setVisible(false);
@@ -347,19 +331,6 @@ setTitle("Proyecto 1");//tituloventana
 
     public JButton getBValue() {
         return bValue;
-    }
-
-    public void setBToList(String text) {
-        bToList = new JButton();
-        bToList.setText(text);
-        bToList.setBounds(8, 450, 115, 30);
-        bToList.setFont(new Font("Algerian", Font.BOLD, 15));
-        bToList.setForeground(Color.white);
-        bToList.setBackground(Color.gray);
-    }
-
-    public JButton getBToList() {
-        return bToList;
     }
 
     public void setBRoute(String text) {

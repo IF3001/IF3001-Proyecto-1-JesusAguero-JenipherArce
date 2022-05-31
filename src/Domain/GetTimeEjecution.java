@@ -28,9 +28,15 @@ public class GetTimeEjecution {
 
     //asigna el tiempo total de ejecusion
     public void setTotalTime() {
-        totalTime = (double) (finishTime - startTime) / 10000;
-        totalFinalTime = totalFinalTime + (double) (finishTime - startTime) / 1000;
+        totalTime = (double) (finishTime - startTime) / 1000;
+        
+        totalFinalTime = totalFinalTime + totalTime;
     }
+
+    public double getTotalFinalTime() {
+        return totalFinalTime;
+    }
+    
 
     public String printFinalTimeUsed() {
         String output = "El tiempo total de ejcucion es de: " + totalFinalTime;
