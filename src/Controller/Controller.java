@@ -236,7 +236,7 @@ public class Controller extends JPanel implements ActionListener {
                     + "Recinto Paraíso - Facultad de Ciencias Económicas\n"
                     + "I CICLO 2022 - Fechea entrega:27/05/2022\n"
                     + "Prof. Esteban Arias Méndez \n"
-                    + "Bachillerato en Informatica empresarialcarrera - UCR");
+                    + "Bachillerato en Informatica empresarial carrera - UCR");
             System.exit(0);
 
         }

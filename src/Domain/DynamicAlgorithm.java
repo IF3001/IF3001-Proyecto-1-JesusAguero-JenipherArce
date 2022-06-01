@@ -77,7 +77,7 @@ public abstract class DynamicAlgorithm {
     protected abstract void fillInCell(Cell currentCell, Cell cellAbove,
             Cell cellToLeft, Cell cellAboveLeft);
 
-    //Llena la tabla de puntajes utilizando los metodos abstractos  que se ejecutn en los metodos de aliniamiento
+    //Llena la tabla de puntajes utilizando los metodos abstractos  que se ejecutn en los metodos de alineamiento
     protected void fillIn() {
         for (int row = 1; row < scoreTable.length; row++) {
             for (int col = 1; col < scoreTable[row].length; col++) {

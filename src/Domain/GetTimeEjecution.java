@@ -9,7 +9,7 @@ package Domain;
  * @author Jesus Aguero / Jenipher Arce
  */
 public class GetTimeEjecution {
-//Clase que devuelve el tiempo de ejecusion
+//Clase que devuelve el tiempo de ejecucion
     private long startTime;
     private long finishTime;
     private double totalTime;
@@ -31,7 +31,7 @@ public class GetTimeEjecution {
     }
 
     
-    //asigna el tiempo total de ejecusion
+    //asigna el tiempo total de ejecucion
     public void setTotalTime() {
         totalTime = (double) (finishTime - startTime) / 1000;
         
@@ -51,7 +51,7 @@ public class GetTimeEjecution {
 
     @Override
     public String toString() {
-        return "El tiempo total es de ejecusion es: " + totalTime + " ms";
+        return "El tiempo total es de ejecucion es: " + totalTime + " ms";
     }
 
 }

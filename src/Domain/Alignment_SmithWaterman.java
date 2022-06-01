@@ -7,7 +7,7 @@ package Domain;
  * @author Jesus Aguero / Jenipher Arce
  */
 public class Alignment_SmithWaterman extends AlignmentSequence {
-//Clase que que aplica el algoritmo de Smith Waterman para optener el aliniamiento Local
+//Clase que que aplica el algoritmo de Smith Waterman para optener el alineamiento Local
     
    private Cell highScoreCell;
 
@@ -29,7 +29,7 @@ public class Alignment_SmithWaterman extends AlignmentSequence {
 
    protected void fillInCell(Cell currentCell, Cell cellAbove, Cell cellToLeft,
            //Metodo que llena las celdas con los distintos puntajes 
-           //y ordena la tabla de valores para optener el mejor aliniamiento Local
+           //y ordena la tabla de valores para optener el mejor alineamiento Local
          Cell cellAboveLeft) {
       int rowSpaceScore = cellAbove.getScore() + gap;
       int colSpaceScore = cellToLeft.getScore() + gap;
@@ -77,12 +77,12 @@ public class Alignment_SmithWaterman extends AlignmentSequence {
     */
    @Override
    public String toString() {
-       //Imprime el aliniamiento Local 
+       //Imprime el alineamiento Local 
       return "[Alineamiento Local: sequence1=" + sequence1 + ", sequence2="
             + sequence2 + "]";
    }
 
-   //Metodos abstractos para efectuar el aliniamiento
+   //Metodos abstractos para efectuar el alineamiento
    @Override
    protected boolean traceBackIsNotDone(Cell currentCell) {
       return currentCell.getScore() != 0;

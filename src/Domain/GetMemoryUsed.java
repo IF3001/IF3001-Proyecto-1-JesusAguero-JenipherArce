@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author Jesus Aguero / Jenipher Arce
  */
 public class GetMemoryUsed {
-//Clase para optener la memoria usada en el proceso 
+//Clase para obtener la memoria usada en el proceso 
     
     private static int dataSize = 1024 * 1024;
     //El runtime devuelve memoria en MB
@@ -32,7 +32,7 @@ public class GetMemoryUsed {
     }
 
     @Override
-    //Imprime el total de memoria usada en toda la ejecusion
+    //Imprime el total de memoria usada en toda la ejecucion
     public String toString() {
         return "Memoria usada: " + MemoryUsed() + " bytes";
     }
