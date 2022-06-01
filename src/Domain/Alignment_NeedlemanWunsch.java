@@ -9,7 +9,7 @@ package Domain;
  * @author Jesus Aguero / Jenipher Arce
  */
 public class Alignment_NeedlemanWunsch extends AlignmentSequence {
-    //Clase que devuelve el aliniamiento Global con el Algoritmo de Needleman Wunsch
+    //Clase que devuelve el alineamiento Global con el Algoritmo de Needleman Wunsch
     
     public Alignment_NeedlemanWunsch(String sequence1, String sequence2) {
       super(sequence1, sequence2);
@@ -20,7 +20,7 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
       super(sequence1, sequence2, match, mismatch, gap);
    }
    
-   //Metodo que llena las celdas con los puntajes y optiene de esta forma
+   //Metodo que llena las celdas con los puntajes y obtiene de esta forma
    //el mejor aliniamiento global
    protected void fillInCell(Cell currentCell, Cell cellAbove, Cell cellToLeft,
          Cell cellAboveLeft) {
