@@ -21,7 +21,7 @@ public class Alignment_SmithWaterman extends AlignmentSequence {
    }
 
    protected void initialize() {
-       //Metodo que asignixa el valor mas alto de la tabla que sera el valor inicial 
+       //Metodo que asignina el valor mas alto de la tabla que sera el valor inicial 
       super.initialize();
 
       highScoreCell = scoreTable[0][0];

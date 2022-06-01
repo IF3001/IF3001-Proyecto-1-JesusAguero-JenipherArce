@@ -16,7 +16,7 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
    protected int gap;
    protected String[] alignments;
 
-   //Esta clase recive los pesos y secuencias y aplica los metodos necesarios para optener los puntajes
+   //Esta clase recibe los pesos y secuencias y aplica los metodos necesarios para obtener los puntajes
    public AlignmentSequence(String sequence1, String sequence2) {
       this(sequence1, sequence2, 1, -1, -2);
    }
@@ -30,7 +30,7 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
       this.gap = gap;
    }
    
-   //Metodo que hace el seguimiento para haberiguar cual es el mejor puntaje
+   //Metodo que hace el seguimiento para averiguar cual es el mejor puntaje
    protected Object getTraceback() {
       StringBuffer align1Buf = new StringBuffer();
       StringBuffer align2Buf = new StringBuffer();
@@ -57,7 +57,7 @@ public abstract class AlignmentSequence extends DynamicAlgorithm{
 
       return alignments;
    }
-   //Metodo abstracto que se ejecuta en las clases de aliniamiento Global y Local
+   //Metodo abstracto que se ejecuta en las clases de alineamiento Global y Local
    protected abstract boolean traceBackIsNotDone(Cell currentCell);
 
    //Devuelve el puntaje de cada aliniamiento que se guardar en la tabla de puntajes

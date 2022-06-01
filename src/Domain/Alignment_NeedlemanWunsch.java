@@ -21,7 +21,7 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
    }
    
    //Metodo que llena las celdas con los puntajes y obtiene de esta forma
-   //el mejor aliniamiento global
+   //el mejor alineamiento global
    protected void fillInCell(Cell currentCell, Cell cellAbove, Cell cellToLeft,
          Cell cellAboveLeft) {
       int rowSpaceScore = cellAbove.getScore() + gap;
@@ -70,7 +70,7 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
     */
    @Override
    public String toString() {
-       //Retorna el aliniamiento
+       //Retorna el alineamiento
       return "[NeedlemanWunsch: sequence1=" + sequence1 + ", sequence2="
             + sequence2 + "]";
    }
@@ -86,7 +86,7 @@ public class Alignment_NeedlemanWunsch extends AlignmentSequence {
       }
    }
 
-   //Metodo que optiene el valor del puntaje inicial
+   //Metodo que obtiene el valor del puntaje inicial
    protected int getInitialScore(int row, int col) {
       if (row == 0 && col != 0) {
          return col * gap;
