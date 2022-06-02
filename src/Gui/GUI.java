@@ -122,25 +122,25 @@ public class GUI extends JFrame {
 
     public void initializer() {
 
-//this.setTitle("Proyecto 1");// Panel con fondo de imagen
-//this.setSize(new Dimension(900,800));
-//this.add(panel);
+this.setTitle("Proyecto 1");// Panel con fondo de imagen
+this.setSize(new Dimension(900,800));
+this.add(panel);
 
 
                 
-        setTitle("Proyecto 1");//tituloventana
-		setLayout(null);// ordena pero si se pone todo no
-		setSize(900,800);// tamano ventana
-		setVisible(true);
-		setLocationRelativeTo(null);
-		this.getContentPane().setBackground(Color.LIGHT_GRAY);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar proceso	
+//        setTitle("Proyecto 1");//tituloventana
+//		setLayout(null);// ordena pero si se pone todo no
+//		setSize(900,800);// tamano ventana
+//		setVisible(true);
+//		setLocationRelativeTo(null);
+//		this.getContentPane().setBackground(Color.LIGHT_GRAY);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//cerrar proceso	
     }
 
     public void setjTitulo(String text) {
         jTitulo = new JLabel();
         jTitulo.setText(text);
-        jTitulo.setBounds(390, 15, 130, 20);
+        jTitulo.setBounds(340, 15, 380, 20);
         jTitulo.setForeground(Color.white);
         jTitulo.setFont(new Font("Algerian", Font.BOLD, 20));
 
