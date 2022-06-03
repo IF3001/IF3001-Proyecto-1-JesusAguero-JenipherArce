@@ -122,9 +122,9 @@ public class GUI extends JFrame {
 
     public void initializer() {
 
-this.setTitle("Proyecto 1");// Panel con fondo de imagen
-this.setSize(new Dimension(900,800));
-this.add(panel);
+        this.setTitle("Proyecto 1");// Panel con fondo de imagen
+        this.setSize(new Dimension(900, 800));
+        this.add(panel);
 
 
                 
